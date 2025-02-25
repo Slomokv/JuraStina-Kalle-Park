@@ -15,7 +15,7 @@ Resource    VG_Daniel_minor-keywords.robot
 *** Keywords ***
 
 
-### The user registers with a username that will be unique ###
+### The user should be able to register with a username that will be unique ###
 
 That an account with the name '${TEST_USERNAME}' already exists
     [Tags]    Given
@@ -36,23 +36,52 @@ A user tries to register using the same name
 
 The user gets an error saying that the name is already taken
     [Tags]    Then
-    [Documentation]
+
     Registering with a name that is taken should display an error message
 
 
-### The user has 
+### Tickets page dropdown tests ###
 
 That the user is logged in and on the "buy tickets" page
     [Tags]    Given
-    [Documentation]    
+
     The user is logged in
     The user navigates to the "buy tickets" page
 
 The user clicks the dropdown menu "ticket type"
     [Tags]    When
-    [Documentation]
+
+    Click Element    ${ticket_type_dropdown}
+
+The user clicks the dropdown menu "ticket category"
+    [Tags]    When
+
     Click Element    ${ticket_category_dropdown}
 
+
 The user should be able to choose between an "Adult", "Child" or "Senior" ticket
+    [Tags]    Then
+    [Documentation]    At this moment, the test doesn't require clicking the dropdown to run this test
+    Element Should Contain    ${ticket_type_dropdown}    Adult
+    Element Should Contain    ${ticket_type_dropdown}    Child
+    Element Should Contain    ${ticket_type_dropdown}    Senior
+
+The user should be able to choose between a "Regular" and a "VIP" ticket
+    [Tags]    Then
+    [Documentation]    At this moment, the test doesn't require clicking the dropdown to run this test
+    Element Should Contain    ${ticket_category_dropdown}    Regular
+    Element Should Contain    ${ticket_category_dropdown}    VIP
 
 
+### Tickets price test
+
+The user looks at the price of a VIP and Regular ticket
+    [Tags]    When
+    They add a 'regular' ticket to the cart
+    They add a 'vip' ticket to the cart
+    Click Element    ${nav_menu_cart}
+    Wait Until Element Is Visible    ${cart_details}    10s
+
+The price of a VIP ticket should be twice that of a Regular ticket
+    [Tags]    Then
+    Element Should Contain    ${}

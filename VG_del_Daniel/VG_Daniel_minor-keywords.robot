@@ -39,3 +39,4 @@ The user navigates to the "buy tickets" page
     [Tags]    VG_minor
     Click Element    ${nav_menu_ticket}
     Wait Until Element Is Visible    ${ticket_type_dropdown}    10s
+
