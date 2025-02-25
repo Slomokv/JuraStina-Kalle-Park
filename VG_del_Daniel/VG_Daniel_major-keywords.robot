@@ -15,7 +15,7 @@ Resource    VG_Daniel_minor-keywords.robot
 *** Keywords ***
 
 
-### User registers with a username that will be unique ###
+### The user registers with a username that will be unique ###
 
 That an account with the name '${TEST_USERNAME}' already exists
     [Tags]    Given
@@ -38,5 +38,21 @@ The user gets an error saying that the name is already taken
     [Tags]    Then
     [Documentation]
     Registering with a name that is taken should display an error message
+
+
+### The user has 
+
+That the user is logged in and on the "buy tickets" page
+    [Tags]    Given
+    [Documentation]    
+    The user is logged in
+    The user navigates to the "buy tickets" page
+
+The user clicks the dropdown menu "ticket type"
+    [Tags]    When
+    [Documentation]
+    Click Element    ${ticket_category_dropdown}
+
+The user should be able to choose between an "Adult", "Child" or "Senior" ticket
 
 

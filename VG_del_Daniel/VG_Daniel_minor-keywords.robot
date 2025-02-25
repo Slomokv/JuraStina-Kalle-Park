@@ -34,3 +34,8 @@ They attempt to register with a specified name
 Registering with a name that is taken should display an error message
     [Tags]    VG_minor
     Wait Until Element Contains    ${register_message}    ${register_error_message}
+
+The user navigates to the "buy tickets" page
+    [Tags]    VG_minor
+    Click Element    ${nav_menu_ticket}
+    Wait Until Element Is Visible    ${ticket_type_dropdown}    10s
