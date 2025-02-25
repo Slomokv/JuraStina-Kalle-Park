@@ -84,4 +84,8 @@ The user looks at the price of a VIP and Regular ticket
 
 The price of a VIP ticket should be twice that of a Regular ticket
     [Tags]    Then
-    Element Should Contain    ${}
+    [Documentation]    Currently checks if the cart contains these exact strings, as I haven't been able to 
+    ...    understand locators in flexboxes yet, but as long as none of the prices changes, the price of
+    ...    a VIP ticket is indeed twice the price of a regular ticket - DK
+    Element Should Contain    ${cart_item_no_1}    1 Regular Adult Ticket(s) - $50
+    Element Should Not Contain   ${cart_item_no_2}    1 VIP Adult Ticket(s) - $100
