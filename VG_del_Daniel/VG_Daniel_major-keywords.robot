@@ -20,23 +20,19 @@ Resource    VG_Daniel_minor-keywords.robot
 That an account with the name '${TEST_USERNAME}' already exists
     [Tags]    Given
     [Documentation]    Sets a TEST_USERNAME for the scope of the test this is called for
-
     Set Test Variable    ${TEST_USERNAME}    ${TEST_USERNAME}
     User has a registered account with a specified name
     They should be redirected to the login page
     
 
-
 A user tries to register using the same name
     [Tags]    When
     [Documentation]    The user tries to register with the same TEST_USERNAME as in the Given step
-
     They attempt to register with a specified name
 
 
 The user gets an error saying that the name is already taken
     [Tags]    Then
-
     Registering with a name that is taken should display an error message
 
 
@@ -44,20 +40,16 @@ The user gets an error saying that the name is already taken
 
 That the user is logged in and on the "buy tickets" page
     [Tags]    Given
-
     The user is logged in
     The user navigates to the "buy tickets" page
 
 The user clicks the dropdown menu "ticket type"
     [Tags]    When
-
     Click Element    ${ticket_type_dropdown}
 
 The user clicks the dropdown menu "ticket category"
     [Tags]    When
-
     Click Element    ${ticket_category_dropdown}
-
 
 The user should be able to choose between an "Adult", "Child" or "Senior" ticket
     [Tags]    Then
